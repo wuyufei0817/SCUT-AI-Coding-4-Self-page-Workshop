@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zhenghao | Homepage V1</title>
+<style>
+* { box-sizing: border-box; }
+body {
+    margin: 0;
+    font-family: Arial, "Microsoft YaHei", sans-serif;
+    background: #ffffff;
+    color: #161616;
+    line-height: 1.7;
+}
+nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 8%;
+    border-bottom: 1px solid #e5e5e5;
+}
+nav a { color: #666666; text-decoration: none; margin-left: 20px; }
+.hero {
+    text-align: center;
+    padding: 80px 20px 50px;
+}
+.hero h1 { font-size: 52px; margin: 0; }
+.hero h2 { color: #666666; font-weight: normal; font-size: 20px; }
+.hero p { max-width: 620px; margin: 18px auto; color: #666666; }
+.primary {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 20px;
+    background: #222222;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+}
+section { max-width: 960px; margin: auto; padding: 50px 24px; }
+.about { color: #555555; font-size: 18px; }
+.tags { margin-top: 20px; }
+.tag {
+    display: inline-block;
+    padding: 8px 12px;
+    background: #f5f5f7;
+    border-radius: 999px;
+    margin: 0 8px 8px 0;
+}
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+.project-card {
+    padding: 22px;
+    background: #f5f5f7;
+    border: 1px solid #e5e5e5;
+}
+.contact-box { padding: 28px; background: #f5f5f7; }
+.contact-box a { color: #161616; margin-right: 16px; }
+footer { text-align: center; color: #888888; padding: 32px; }
+</style>
+</head>
+<body>
+<nav>
+    <strong>ZH</strong>
+    <div>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </div>
+</nav>
+
+<header class="hero">
+    <h1>Hi, I'm Zhenghao.</h1>
+    <h2>Computer Science Student · AI Explorer</h2>
+    <p>
+        I'm interested in artificial intelligence, machine learning
+        and building useful things with technology.
+    </p>
+    <a class="primary" href="#projects">View My Projects</a>
+</header>
+
+<section id="about">
+    <h2>About Me</h2>
+    <div class="about">
+        I'm a computer science student interested in exploring how
+        artificial intelligence can help us solve real-world problems.
+        I enjoy learning new technologies, building projects and
+        experimenting with new ideas.
+    </div>
+    <div class="tags">
+        <span class="tag">Artificial Intelligence</span>
+        <span class="tag">Python</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">AI Coding</span>
+    </div>
+</section>
+
+<section id="projects">
+    <h2>Projects</h2>
+    <div class="projects">
+        <div class="project-card">
+            <h3>AI Project</h3>
+            <p>A small project exploring how artificial intelligence can solve practical problems.</p>
+            <strong>Python · AI</strong>
+        </div>
+        <div class="project-card">
+            <h3>Personal Website</h3>
+            <p>My first personal homepage, created during an AI Coding workshop.</p>
+            <strong>HTML · CSS · JavaScript</strong>
+        </div>
+        <div class="project-card">
+            <h3>Future Project</h3>
+            <p>This space is reserved for something interesting I will build next.</p>
+            <strong>Coming Soon</strong>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Contact</h2>
+    <div class="contact-box">
+        <h3>Let's connect.</h3>
+        <p>You can find me here:</p>
+        <a href="#">GitHub</a>
+        <a href="mailto:example@example.com">Email</a>
+        <a href="#">Blog</a>
+    </div>
+</section>
+
+<footer>© My Personal Homepage</footer>
+</body>
+</html>

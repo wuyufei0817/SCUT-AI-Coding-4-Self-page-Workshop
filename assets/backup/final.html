@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>My Personal Homepage</title>
+
+<style>
+
+:root {
+    --bg: #ffffff;
+    --surface: #f5f5f7;
+    --text: #161616;
+    --secondary: #666666;
+    --border: #e5e5e5;
+    --accent: #222222;
+}
+
+body.dark {
+    --bg: #111111;
+    --surface: #1b1b1b;
+    --text: #f5f5f5;
+    --secondary: #aaaaaa;
+    --border: #333333;
+    --accent: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family:
+        Arial,
+        "Microsoft YaHei",
+        sans-serif;
+
+    background: var(--bg);
+    color: var(--text);
+
+    transition:
+        background 0.3s,
+        color 0.3s;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 18px 8%;
+
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+
+    z-index: 10;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--secondary);
+}
+
+.nav-links a:hover {
+    color: var(--text);
+}
+
+button {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+
+    padding: 9px 14px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+.hero {
+    min-height: 75vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+
+    padding: 60px 20px;
+}
+
+.avatar {
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    background: var(--surface);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 36px;
+    font-weight: bold;
+
+    margin-bottom: 30px;
+}
+
+.hero h1 {
+    margin: 0;
+
+    font-size: clamp(
+        44px,
+        8vw,
+        88px
+    );
+}
+
+.hero h2 {
+    margin-top: 14px;
+
+    color: var(--secondary);
+
+    font-size: 22px;
+    font-weight: normal;
+}
+
+.hero p {
+    max-width: 650px;
+
+    color: var(--secondary);
+
+    line-height: 1.8;
+}
+
+.primary-button {
+    display: inline-block;
+
+    margin-top: 18px;
+
+    padding: 13px 22px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    background: var(--accent);
+    color: var(--bg);
+}
+
+section {
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 90px 24px;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 32px;
+}
+
+.about {
+    font-size: 18px;
+
+    line-height: 1.9;
+
+    color: var(--secondary);
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin-top: 30px;
+}
+
+.tag {
+    padding: 9px 14px;
+
+    background: var(--surface);
+
+    border-radius: 999px;
+}
+
+.projects {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(240px, 1fr)
+        );
+
+    gap: 20px;
+}
+
+.project-card {
+    padding: 28px;
+
+    background: var(--surface);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    transition:
+        transform 0.25s,
+        box-shadow 0.25s;
+}
+
+.project-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 14px 30px
+        rgba(0, 0, 0, 0.08);
+}
+
+.project-card h3 {
+    margin-top: 0;
+}
+
+.project-card p {
+    color: var(--secondary);
+
+    line-height: 1.6;
+}
+
+.contact-box {
+    padding: 40px;
+
+    border-radius: 20px;
+
+    background: var(--surface);
+}
+
+.contact-links {
+    display: flex;
+
+    gap: 18px;
+
+    flex-wrap: wrap;
+
+    margin-top: 20px;
+}
+
+.contact-links a {
+    color: var(--text);
+}
+
+footer {
+    padding: 40px;
+
+    text-align: center;
+
+    color: var(--secondary);
+}
+
+@media (max-width: 600px) {
+
+    nav {
+        padding: 14px 20px;
+    }
+
+    .nav-links a {
+        display: none;
+    }
+
+    section {
+        padding: 60px 20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<nav>
+
+    <div class="logo">
+        ZH
+    </div>
+
+    <div class="nav-links">
+
+        <a href="#about">
+            About
+        </a>
+
+        <a href="#projects">
+            Projects
+        </a>
+
+        <a href="#contact">
+            Contact
+        </a>
+
+        <button id="theme-toggle">
+            Dark Mode
+        </button>
+
+    </div>
+
+</nav>
+
+
+<header class="hero">
+
+    <div class="avatar">
+        ZH
+    </div>
+
+    <h1>
+        Hi, I'm Zhenghao.
+    </h1>
+
+    <h2>
+        Computer Science Student · AI Explorer
+    </h2>
+
+    <p>
+
+        I'm interested in artificial intelligence,
+        machine learning and building useful things
+        with technology.
+
+    </p>
+
+    <a
+        href="#projects"
+        class="primary-button"
+    >
+        View My Projects
+    </a>
+
+</header>
+
+
+<section id="about">
+
+    <h2 class="section-title">
+        About Me
+    </h2>
+
+    <div class="about">
+
+        I'm a computer science student interested
+        in exploring how artificial intelligence
+        can help us solve real-world problems.
+
+        I enjoy learning new technologies,
+        building projects and experimenting
+        with new ideas.
+
+    </div>
+
+    <div class="tags">
+
+        <span class="tag">
+            Artificial Intelligence
+        </span>
+
+        <span class="tag">
+            Python
+        </span>
+
+        <span class="tag">
+            Machine Learning
+        </span>
+
+        <span class="tag">
+            AI Coding
+        </span>
+
+    </div>
+
+</section>
+
+
+<section id="projects">
+
+    <h2 class="section-title">
+        Projects
+    </h2>
+
+    <div class="projects">
+
+        <div class="project-card">
+
+            <h3>
+                AI Project
+            </h3>
+
+            <p>
+
+                A small project exploring how
+                artificial intelligence can solve
+                practical problems.
+
+            </p>
+
+            <strong>
+                Python · AI
+            </strong>
+
+        </div>
+
+
+        <div class="project-card">
+
+            <h3>
+                Personal Website
+            </h3>
+
+            <p>
+
+                My first personal homepage,
+                created during an AI Coding
+                workshop.
+
+            </p>
+
+            <strong>
+                HTML · CSS · JavaScript
+            </strong>
+
+        </div>
+
+
+        <div class="project-card">
+
+            <h3>
+                Future Project
+            </h3>
+
+            <p>
+
+                This space is reserved for
+                something interesting I will
+                build next.
+
+            </p>
+
+            <strong>
+                Coming Soon
+            </strong>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="contact">
+
+    <h2 class="section-title">
+        Contact
+    </h2>
+
+    <div class="contact-box">
+
+        <h3>
+            Let's connect.
+        </h3>
+
+        <p>
+            You can find me here:
+        </p>
+
+        <div class="contact-links">
+
+            <a href="#">
+                GitHub
+            </a>
+
+            <a href="mailto:example@example.com">
+                Email
+            </a>
+
+            <a href="#">
+                Blog
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+
+    © <span id="year"></span>
+    My Personal Homepage
+
+</footer>
+
+
+<script>
+
+const themeButton =
+    document.getElementById(
+        "theme-toggle"
+    );
+
+
+function updateButton() {
+
+    if (
+        document.body.classList
+            .contains("dark")
+    ) {
+
+        themeButton.textContent =
+            "Light Mode";
+
+    } else {
+
+        themeButton.textContent =
+            "Dark Mode";
+
+    }
+
+}
+
+
+themeButton.addEventListener(
+    "click",
+    function () {
+
+        document.body.classList
+            .toggle("dark");
+
+        const isDark =
+            document.body.classList
+                .contains("dark");
+
+        localStorage.setItem(
+            "theme",
+            isDark
+                ? "dark"
+                : "light"
+        );
+
+        updateButton();
+
+    }
+);
+
+
+const savedTheme =
+    localStorage.getItem("theme");
+
+
+if (savedTheme === "dark") {
+
+    document.body.classList
+        .add("dark");
+
+}
+
+
+updateButton();
+
+
+document.getElementById(
+    "year"
+).textContent =
+    new Date().getFullYear();
+
+</script>
+
+
+</body>
+
+</html>

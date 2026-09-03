@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Coding 入门</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+    height: 100%;
+    overflow: hidden;
+    background: #d9d9d9;
+    color: #111;
+    font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", Arial, sans-serif;
+}
+body.fs { background: #000; }
+
+.stage {
+    width: 1920px;
+    height: 1080px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    color: #111;
+    overflow: hidden;
+    box-shadow: 0 12px 48px rgba(0,0,0,.18);
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 88px 120px 100px;
+}
+.slide.on { display: flex; }
+.slide.cover { background: #fff; }
+
+.topbar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 8px;
+    background: #111;
+}
+.foot {
+    position: absolute;
+    left: 120px;
+    right: 120px;
+    bottom: 36px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    color: #666;
+}
+
+.kicker {
+    font-size: 28px;
+    color: #555;
+    margin-bottom: 22px;
+    letter-spacing: 0.04em;
+}
+h1 {
+    font-size: 92px;
+    line-height: 1.15;
+    font-weight: 700;
+    margin-bottom: 28px;
+}
+h2 {
+    font-size: 64px;
+    line-height: 1.2;
+    font-weight: 700;
+    margin-bottom: 36px;
+}
+.sub {
+    font-size: 36px;
+    color: #444;
+    line-height: 1.5;
+}
+.lead {
+    font-size: 52px;
+    line-height: 1.35;
+    font-weight: 700;
+}
+ul {
+    list-style: none;
+    font-size: 40px;
+    line-height: 1.7;
+}
+ul.small { font-size: 34px; line-height: 1.65; }
+ul li::before {
+    content: "·  ";
+    font-weight: 700;
+}
+.num {
+    font-size: 40px;
+    line-height: 1.7;
+}
+.num div { margin-bottom: 8px; }
+.num b { display: inline-block; min-width: 1.6em; }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 32px;
+}
+th, td {
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 1px solid #ddd;
+    vertical-align: top;
+}
+th { color: #555; font-weight: 600; font-size: 26px; }
+td:first-child { width: 220px; font-weight: 700; white-space: nowrap; }
+
+.cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    width: 100%;
+}
+.box {
+    border: 2px solid #111;
+    padding: 32px 36px;
+}
+.box h3 { font-size: 32px; margin-bottom: 16px; }
+.box p { font-size: 30px; line-height: 1.5; }
+.strike { text-decoration: line-through; color: #888; }
+.ok { font-weight: 700; }
+pre {
+    font-family: Consolas, "Microsoft YaHei", monospace;
+    font-size: 30px;
+    line-height: 1.55;
+    border: 2px solid #111;
+    padding: 32px 36px;
+    white-space: pre-wrap;
+    background: #fafafa;
+}
+.flow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 10px;
+    align-items: center;
+    font-size: 34px;
+    font-weight: 700;
+}
+.flow i {
+    font-style: normal;
+    font-weight: 400;
+    color: #888;
+    padding: 0 4px;
+}
+iframe.demo {
+    width: 100%;
+    height: 720px;
+    border: 2px solid #111;
+    background: #fff;
+}
+.links { font-size: 34px; line-height: 1.8; }
+.links a { color: #111; }
+
+.notes {
+    display: none;
+    position: fixed;
+    right: 24px;
+    bottom: 24px;
+    width: 420px;
+    max-height: 36vh;
+    overflow: auto;
+    background: #fff;
+    color: #111;
+    border: 2px solid #111;
+    padding: 16px 18px;
+    font-size: 16px;
+    line-height: 1.5;
+    z-index: 9;
+}
+.notes.on { display: block; }
+
+.start {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.start.hide { display: none; }
+.start h1 { font-size: 56px; margin-bottom: 16px; }
+.start p { font-size: 22px; color: #555; }
+</style>
+</head>
+<body>
+
+<div class="start" id="start">
+    <h1>AI Coding 入门</h1>
+    <p>点击开始放映　　F5 全屏　　方向键翻页</p>
+</div>
+
+<div class="stage" id="stage">
+    <div class="topbar"></div>
+    <div class="foot">
+        <span>AI Coding 入门 Workshop</span>
+        <span id="page">1 / 1</span>
+    </div>
+
+    <section class="slide cover on" data-notes="开场先问全班：你会做网站吗？大部分人会说不会。不要解释 LLM。">
+        <div class="kicker">45 分钟 Workshop</div>
+        <h1>你会做网站吗？</h1>
+        <p class="sub">做出你的第一个个人主页</p>
+    </section>
+
+    <section class="slide" data-notes="点名：今天不是 HTML 课。学生打开的是 Jupyter，不是 VS Code。">
+        <div class="kicker">Part 0　0–4 分钟</div>
+        <h2>今天不学这些</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Web 开发</li>
+        </ul>
+    </section>
+
+    <section class="slide" data-notes="把重心放到这一句，然后进入挑战。">
+        <div class="kicker">今天要学的是</div>
+        <p class="lead">如何和 AI 一起做软件</p>
+    </section>
+
+    <section class="slide" data-notes="强调作品必须不同。不想公开的信息可以虚构。">
+        <div class="kicker">今天的挑战</div>
+        <h2>每个人带走一份自己的主页</h2>
+        <ul class="small">
+            <li>名字</li>
+            <li>About Me</li>
+            <li>Interests / Skills</li>
+            <li>Projects</li>
+            <li>Contact</li>
+            <li>至少一个可以点击的交互</li>
+        </ul>
+    </section>
+
+    <section class="slide" data-notes="重复这一句。不要追求全班统一。">
+        <p class="lead">每个人最终的网页<br>应该是不一样的</p>
+    </section>
+
+    <section class="slide" data-notes="不要在这一页讲太久。让学生知道节奏，然后立刻做 Demo。">
+        <div class="kicker">时间表</div>
+        <h2>45 分钟怎么走</h2>
+        <table>
+            <tr><th>时间</th><th>内容</th></tr>
+            <tr><td>0–4</td><td>开场 Demo</td></tr>
+            <tr><td>4–8</td><td>Jupyter：跑出第一个网页</td></tr>
+            <tr><td>8–15</td><td>AI 生成个人主页 V0</td></tr>
+            <tr><td>15–21</td><td>完善内容 V1</td></tr>
+            <tr><td>21–27</td><td>视觉重构 V2</td></tr>
+            <tr><td>27–33</td><td>加入交互 V3</td></tr>
+            <tr><td>33–37</td><td>Debug Challenge</td></tr>
+            <tr><td>37–45</td><td>自由开发 + 展示</td></tr>
+        </table>
+    </section>
+
+    <section class="slide" data-notes="这三个点比讲概念更重要。到点就检查，不要等人。">
+        <div class="kicker">硬检查点</div>
+        <h2>只盯三件事</h2>
+        <div class="num">
+            <div><b>15:00</b>　所有人必须看到自己的网页</div>
+            <div><b>33:00</b>　所有人至少有一个可点击交互</div>
+            <div><b>37:00</b>　停止统一教学，进入自由开发</div>
+        </div>
+    </section>
+
+    <section class="slide" data-notes="把这段 Prompt 发给现场 AI。不要讲代码。让页面出现。太慢就打开 assets/backup/demo.html。">
+        <div class="kicker">0–4 分钟　现场 Demo</div>
+        <h2>先让 AI 做一个出来</h2>
+        <pre>帮我制作一个个人主页。
+我叫 Alex，是一名人工智能初学者。
+我喜欢摄影、游戏和 AI。
+请使用 HTML、CSS、JavaScript 制作。
+所有代码写在一个 index.html 文件中。
+不使用任何第三方库。</pre>
+    </section>
+
+    <section class="slide" data-notes="只讲这一句，然后进入 Jupyter。不要展开模型原理。">
+        <div class="kicker">今天真正的问题</div>
+        <p class="lead">我们怎样把自己想做的东西，<br>准确地告诉 AI？</p>
+    </section>
+
+    <section class="slide" data-notes="这张图整节课反复指。学生带走的是工作流，不是标签名。">
+        <div class="kicker">整节课只记这一张图</div>
+        <h2>AI Coding Workflow</h2>
+        <div class="flow">
+            Describe <i>→</i> Generate <i>→</i> Run <i>→</i> Inspect
+            <i>→</i> Iterate <i>→</i> Debug <i>→</i> Verify
+        </div>
+        <p class="sub" style="margin-top:48px">看任务 → 复制 Prompt → 问 AI → 贴回 Notebook → Shift + Enter → 看网页</p>
+    </section>
+
+    <section class="slide" data-notes="目标：每人记住 Shift + Enter，并看到 Hello 网页。不要解释 h1 / p。">
+        <div class="kicker">4–8 分钟　Part 1</div>
+        <h2>今天唯一必须记住的操作</h2>
+        <p class="lead">Shift + Enter</p>
+        <p class="sub" style="margin-top:24px">运行当前 Cell</p>
+    </section>
+
+    <section class="slide" data-notes="卡住就看他有没有运行错 Cell。不要开始讲 HTML。">
+        <div class="kicker">Part 1</div>
+        <h2>代码会变成一个真正的网页</h2>
+        <div class="flow">代码　<i>→</i>　index.html　<i>→</i>　网页</div>
+    </section>
+
+    <section class="slide" data-notes="让学生花 1 分钟填写。然后复制 Prompt 01。这是第一次真正的 AI Coding。">
+        <div class="kicker">8–15 分钟　Part 2</div>
+        <h2>告诉 AI 你是谁</h2>
+        <ul class="small">
+            <li>姓名</li>
+            <li>身份</li>
+            <li>一句话介绍</li>
+            <li>三个兴趣</li>
+            <li>一个项目 / 经历</li>
+            <li>联系方式</li>
+        </ul>
+    </section>
+
+    <section class="slide" data-notes="课堂红线。巡场时最常见的失败就是把 markdown 围栏一起贴进去。">
+        <div class="kicker">粘贴规则</div>
+        <h2>只复制代码本身</h2>
+        <div class="cols">
+            <div class="box">
+                <h3 class="strike">不要复制</h3>
+                <p>```html<br>……代码……<br>```</p>
+            </div>
+            <div class="box">
+                <h3 class="ok">只要中间的 HTML</h3>
+                <p>贴到 %%writefile 下面<br>然后 Shift + Enter</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide" data-notes="巡场只处理这三类。不要替学生手写 HTML。">
+        <div class="kicker">巡场</div>
+        <h2>只会遇到这三类问题</h2>
+        <div class="num">
+            <div><b>A.</b> AI 返回了 Markdown 围栏　→　删掉围栏</div>
+            <div><b>B.</b> 页面没有刷新　→　再运行 preview</div>
+            <div><b>C.</b> 页面报错　→　让 AI 修，不要手写</div>
+        </div>
+    </section>
+
+    <section class="slide" data-notes="到点就检查。没成功的人打开 backup/v0.html，把内容贴进 writefile。不要继续等。">
+        <div class="kicker">15:00 强制检查</div>
+        <h2>现在每个人都应该看到</h2>
+        <ul>
+            <li>自己的名字</li>
+            <li>一段介绍</li>
+            <li>一个网页</li>
+        </ul>
+    </section>
+
+    <section class="slide" data-notes="口头强调：不要说重新帮我写一个。">
+        <div class="kicker">15–21 分钟　Part 3</div>
+        <h2>AI Coding ≠ 一次生成</h2>
+        <p class="sub strike">重新帮我写一个</p>
+        <p class="lead" style="margin-top:28px">在现有代码基础上修改<br>并保留已有功能</p>
+    </section>
+
+    <section class="slide" data-notes="现场问：哪个 Prompt 更容易得到你真正想要的结果？">
+        <div class="kicker">21–27 分钟　Part 4</div>
+        <h2>「好看」到底是什么意思？</h2>
+        <div class="cols">
+            <div class="box">
+                <h3>Prompt A</h3>
+                <p>帮我改得好看一些。</p>
+            </div>
+            <div class="box">
+                <h3>Prompt B</h3>
+                <p>简洁现代、大面积留白、Hero 占首屏、圆角卡片、轻微 Hover、统一间距、专业学生主页。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="slide" data-notes="鼓励自己描述。不要追求统一风格。这一段结束全班页面应开始明显不同。">
+        <div class="kicker">让结果开始分叉</div>
+        <h2>选一种风格，或自己描述</h2>
+        <div class="num">
+            <div><b>A</b>　Minimal　简洁、留白、专业</div>
+            <div><b>B</b>　Dark Tech　深色、科技、强调项目</div>
+            <div><b>C</b>　Colorful　年轻、丰富、活泼</div>
+            <div><b>D</b>　Academic　经历与项目为主</div>
+        </div>
+    </section>
+
+    <section class="slide" data-notes="统一做深浅色切换。运行后必须让学生真的点一下按钮。">
+        <div class="kicker">27–33 分钟　Part 5</div>
+        <h2>让网页真正动起来</h2>
+        <p class="lead">Dark / Light<br>Theme Toggle</p>
+        <p class="sub" style="margin-top:28px">点击：Light → Dark<br>再点：Dark → Light</p>
+    </section>
+
+    <section class="slide" data-notes="检查按钮能不能点。不要问 JavaScript 写了什么。跟不上的人用 backup/final.html。">
+        <div class="kicker">33:00 强制检查</div>
+        <h2>现在请点一下按钮</h2>
+        <p class="lead">每个人至少有一个<br>可点击交互</p>
+    </section>
+
+    <section class="slide" data-notes="必须保留。没有 Debug，学生会以为 AI 每次都写对。用独立文件 debug_demo.html。">
+        <div class="kicker">33–37 分钟　Part 6</div>
+        <h2>AI 写的代码一定正确吗？</h2>
+        <p class="lead">不一定。</p>
+        <p class="sub" style="margin-top:28px">点击 Switch Theme —— 没有反应。</p>
+    </section>
+
+    <section class="slide" data-notes="不要先公布答案。根因：HTML 调用 toggleTheme()，脚本定义 switchTheme()。">
+        <div class="kicker">不要只问「为什么不行」</div>
+        <h2>给 AI 四样东西</h2>
+        <div class="num">
+            <div><b>1.</b> 完整代码</div>
+            <div><b>2.</b> 发生了什么</div>
+            <div><b>3.</b> 你预期什么</div>
+            <div><b>4.</b> 报错信息</div>
+        </div>
+    </section>
+
+    <section class="slide" data-notes="修完后必须自己再点一次。">
+        <p class="lead">AI 说已经修复，没有意义。</p>
+        <p class="sub" style="margin-top:32px">重新运行并自己验证，才算修复。</p>
+    </section>
+
+    <section class="slide" data-notes="统一教学到这里结束。不要替学生写代码。只把需求问清楚，把人推回 AI。展示时只问：你最后增加了什么？你是怎么告诉 AI 的？">
+        <div class="kicker">37–42 分钟　Part 7</div>
+        <h2>现在你是产品经理</h2>
+        <p class="lead">我希望我的主页<br>还可以做什么？</p>
+    </section>
+
+    <section class="slide" data-notes="回到工作流。这是学生应该带走的东西。">
+        <div class="kicker">今天真正学习的是什么</div>
+        <h2>不是 HTML / CSS / JavaScript</h2>
+        <div class="flow">
+            Describe <i>→</i> Generate <i>→</i> Run <i>→</i> Inspect
+            <i>→</i> Iterate <i>→</i> Debug <i>→</i> Verify
+        </div>
+    </section>
+
+    <section class="slide" data-notes="收束。强调学生作品应该和示例不一样。">
+        <h2>AI Coding ≠ AI 替你思考</h2>
+        <p class="sub">AI 可以写代码、改代码、找 Bug、解释代码。</p>
+        <p class="lead" style="margin-top:36px">改变的是「如何写程序」<br>不是「是否需要思考」</p>
+    </section>
+</div>
+
+<aside class="notes" id="notes"></aside>
+
+<script>
+const stage = document.getElementById("stage");
+const slides = [...document.querySelectorAll(".slide")];
+const notesEl = document.getElementById("notes");
+const pageEl = document.getElementById("page");
+const startEl = document.getElementById("start");
+let i = 0;
+let notesOn = false;
+let started = false;
+
+function fit() {
+    const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    stage.style.transform = "translate(-50%, -50%) scale(" + s + ")";
+}
+
+function show(n) {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, idx) => s.classList.toggle("on", idx === i));
+    pageEl.textContent = (i + 1) + " / " + slides.length;
+    notesEl.textContent = slides[i].dataset.notes || "";
+    if (started) location.hash = String(i + 1);
+}
+
+function next() { show(i + 1); }
+function prev() { show(i - 1); }
+
+function goFullscreen() {
+    const el = document.documentElement;
+    if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+}
+
+function start(fs) {
+    started = true;
+    startEl.classList.add("hide");
+    if (fs) goFullscreen();
+    const fromHash = parseInt(location.hash.replace("#", ""), 10);
+    show(Number.isFinite(fromHash) && fromHash > 0 ? fromHash - 1 : 0);
+}
+
+startEl.addEventListener("click", () => start(true));
+
+document.addEventListener("fullscreenchange", () => {
+    document.body.classList.toggle("fs", !!document.fullscreenElement);
+    fit();
+});
+
+window.addEventListener("resize", fit);
+
+window.addEventListener("keydown", (e) => {
+    if (!started) {
+        if (["F5", "Enter", " ", "ArrowRight"].includes(e.key)) {
+            e.preventDefault();
+            start(e.key === "F5");
+        }
+        return;
+    }
+    if (["ArrowRight", "PageDown", " ", "Enter"].includes(e.key)) {
+        e.preventDefault();
+        next();
+    } else if (["ArrowLeft", "PageUp", "Backspace"].includes(e.key)) {
+        e.preventDefault();
+        prev();
+    } else if (e.key === "Home") {
+        show(0);
+    } else if (e.key === "End") {
+        show(slides.length - 1);
+    } else if (e.key === "n" || e.key === "N") {
+        notesOn = !notesOn;
+        notesEl.classList.toggle("on", notesOn);
+    } else if (e.key === "F5") {
+        e.preventDefault();
+        goFullscreen();
+    } else if (e.key === "Escape" && document.fullscreenElement) {
+        document.exitFullscreen();
+    }
+});
+
+stage.addEventListener("click", (e) => {
+    if (!started) return;
+    if (e.target.closest("a, iframe, .notes")) return;
+    if (e.clientX < window.innerWidth * 0.18) prev();
+    else next();
+});
+
+let startX = 0;
+window.addEventListener("touchstart", (e) => { startX = e.changedTouches[0].clientX; });
+window.addEventListener("touchend", (e) => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (!started) return;
+    if (dx < -40) next();
+    if (dx > 40) prev();
+});
+
+fit();
+show(0);
+</script>
+</body>
+</html>
