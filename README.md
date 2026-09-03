@@ -10,6 +10,8 @@
 
 - 发给学生：`AI_Coding_Workshop_Student.ipynb`
 - 教师投影讲稿：`AI_Coding_Workshop_Teacher.html`（用浏览器打开，当 PPT 用）
+- 环境配置指南：`JUPYTER_SETUP.md`（纯文本，没装 Jupyter 也能看）
+- 一键自检脚本：`check_env.py`（装好 Python 后运行 `python check_env.py`）
 - 备用成品：`assets/backup/`（`demo` / `v0` / `v1` / `v2` / `final`）
 
 学生课堂运行后会在本目录生成 `index.html`、`versions/`、`debug_demo.html`。
