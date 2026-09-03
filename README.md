@@ -11,7 +11,8 @@
 - 发给学生：`AI_Coding_Workshop_Student.ipynb`
 - 教师投影讲稿：`AI_Coding_Workshop_Teacher.html`（用浏览器打开，当 PPT 用）
 - 环境配置指南：`JUPYTER_SETUP.md`（纯文本，没装 Jupyter 也能看）
-- 一键自检脚本：`check_env.py`（装好 Python 后运行 `python check_env.py`）
+- 一键配置脚本：`setup_env.bat`（双击自动完成安装 + 自检，最省事）
+- 只做自检（不安装）：命令行运行 `python setup_env.py --check`
 - 备用成品：`assets/backup/`（`demo` / `v0` / `v1` / `v2` / `final`）
 
 学生课堂运行后会在本目录生成 `index.html`、`versions/`、`debug_demo.html`。
@@ -30,7 +31,7 @@ Demo 和成品页已嵌在讲稿里。学生卡住时，打开 `assets/backup/` 
 
 ## 课前准备
 
-1. 安装 Python 3 与 Jupyter（Notebook 或 JupyterLab 均可）。
+1. 安装 Python 3 与 Jupyter（Notebook 或 JupyterLab 均可；最简单：双击 `setup_env.bat` 自动完成）。
 2. **在本文件夹里启动 Jupyter**，保证 Notebook 和生成的 `index.html` 在同一目录。
 
 ```text
