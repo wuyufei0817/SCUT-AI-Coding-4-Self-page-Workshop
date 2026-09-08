@@ -14,6 +14,8 @@
 - 一键配置脚本：`setup_env.bat`（双击自动完成安装 + 自检，最省事）
 - 只做自检（不安装）：命令行运行 `python setup_env.py --check`
 - 备用成品：`assets/backup/`（`demo` / `v0` / `v1` / `v2` / `final`）
+- Skill 示例：`examples/skill/`（课后进阶）
+- Harness 示例：`examples/harness/`（课后进阶）
 
 学生课堂运行后会在本目录生成 `index.html`、`versions/`、`debug_demo.html`。
 
@@ -68,3 +70,19 @@ jupyter lab
 - 标准环境：本地 Jupyter Notebook / JupyterLab（Windows 可用）
 - VS Code / Cursor 的 Jupyter 一般也能预览
 - 不要用 Google Colab 作为主路径（本地 HTML 预览方式不同）
+
+## 课后继续探索 / Where to go next
+
+以下是可选的课后进阶内容，课堂只需理解概念，不要求配置或完成示例。
+
+### 1. Build reusable Skills
+
+把经常重复的任务经验沉淀下来，回答“这类事情通常怎么做好”。从 [Skill 接入说明](examples/skill/README.md) 和 [个人主页 Skill 示例](examples/skill/personal-homepage/SKILL.md) 开始。
+
+### 2. Build your AI Coding workflow
+
+让 Agent 按 **Read → Edit → Run → Check → Fix → Verify** 完整执行并验证任务。参考 [Harness 接入说明](examples/harness/README.md) 和 [个人主页工作流示例](examples/harness/personal-homepage-workflow.md)，为自己的任务明确目标、检查方法和完成条件。
+
+### 3. Learn your tool
+
+不同 AI Coding 工具对 Skills、rules、instructions、tools 和 workflow 的支持方式不同。使用 Codex、Claude Code、Cursor 或 GitHub Copilot 时，优先查对应工具的官方文档，确认真实配置与加载方式。这里的 Markdown 是教学示例，不代表所有工具都能直接加载或执行。

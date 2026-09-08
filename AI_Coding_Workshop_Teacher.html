@@ -33,7 +33,7 @@ body.fs { background: #000; }
     display: none;
     flex-direction: column;
     justify-content: center;
-    padding: 88px 120px 100px;
+    padding: 104px 140px 112px;
 }
 .slide.on { display: flex; }
 .slide.cover { background: #fff; }
@@ -41,25 +41,25 @@ body.fs { background: #000; }
 .topbar {
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 8px;
+    height: 2px;
     background: #111;
 }
 .foot {
     position: absolute;
-    left: 120px;
-    right: 120px;
+    left: 140px;
+    right: 140px;
     bottom: 36px;
     display: flex;
     justify-content: space-between;
-    font-size: 22px;
+    font-size: 20px;
     color: #666;
 }
 
 .kicker {
     font-size: 28px;
     color: #555;
-    margin-bottom: 22px;
-    letter-spacing: 0.04em;
+    margin-bottom: 32px;
+    letter-spacing: 0;
 }
 h1 {
     font-size: 92px;
@@ -122,7 +122,7 @@ td:first-child { width: 220px; font-weight: 700; white-space: nowrap; }
 }
 .box {
     border: 2px solid #111;
-    padding: 32px 36px;
+    padding: 32px;
 }
 .box h3 { font-size: 32px; margin-bottom: 16px; }
 .box p { font-size: 30px; line-height: 1.5; }
@@ -132,10 +132,10 @@ pre {
     font-family: Consolas, "Microsoft YaHei", monospace;
     font-size: 30px;
     line-height: 1.55;
-    border: 2px solid #111;
-    padding: 32px 36px;
+    border-left: 2px solid #111;
+    padding: 12px 36px;
     white-space: pre-wrap;
-    background: #fafafa;
+    background: #fff;
 }
 .flow {
     display: flex;
@@ -159,6 +159,43 @@ iframe.demo {
 }
 .links { font-size: 34px; line-height: 1.8; }
 .links a { color: #111; }
+
+.cover h1 { font-size: 128px; margin-bottom: 48px; }
+.cover .kicker { margin-bottom: 64px; }
+.slide.statement .lead { font-size: 80px; line-height: 1.45; }
+.slide.instruction .lead { font-size: 120px; margin: 32px 0; }
+.slide.instruction h2 { font-size: 36px; font-weight: 400; color: #555; }
+.agenda { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+.agenda dl { display: grid; grid-template-columns: 164px 1fr; gap: 14px 20px; align-content: start; }
+.agenda dt { font: 600 38px/1.4 Consolas, monospace; }
+.agenda dd { font-size: 30px; line-height: 1.8; }
+.milestones { display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; margin-top: 40px; }
+.milestones strong { display: block; font: 600 72px/1.2 Consolas, monospace; }
+.milestones small { font-size: 26px; font-weight: 400; color: #666; }
+.milestones p { font-size: 30px; line-height: 1.6; margin-top: 12px; }
+.checkpoint { display: grid; grid-template-columns: 600px 1fr; align-items: center; gap: 64px; }
+.checkpoint strong { font: 600 176px/1 Consolas, monospace; }
+.checkpoint small { display: block; font-size: 30px; color: #666; margin-top: 20px; }
+.checkpoint h2 { margin-bottom: 28px; }
+.workflow-title { font-size: 32px; font-weight: 400; color: #555; }
+.workflow-main { display: flex; flex-direction: column; gap: 28px; margin: 36px 0; }
+.workflow-main .flow { font-size: 64px; gap: 24px; }
+.workflow-caption { font-size: 30px; color: #555; margin-top: 32px; }
+.loop-recap h2 { font-size: 42px; font-weight: 400; margin-bottom: 40px; }
+.loop-recap .lead { font-size: 76px; line-height: 1.2; margin: 40px 0; }
+.loop-example { border-top: 1px solid #ccc; padding-top: 22px; font-size: 28px; line-height: 1.7; color: #555; }
+.loop-question { font-size: 40px; font-weight: 600; margin-top: 40px; }
+.agent-compare h2 { font-size: 42px; font-weight: 400; margin-bottom: 48px; }
+.agent-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+.agent-columns > .box { min-width: 0; }
+.agent-columns h3 { font-size: 52px; margin-bottom: 12px; }
+.agent-columns p { font-size: 28px; color: #555; }
+.agent-columns .flow { font-size: 38px; gap: 14px; margin-top: 32px; }
+.agent-concepts { display: flex; gap: 48px; margin-top: 48px; padding-top: 24px; border-top: 1px solid #ccc; }
+.agent-concepts dt { font-size: 32px; font-weight: 700; margin-bottom: 10px; }
+.agent-concepts dd { font-size: 26px; line-height: 1.5; color: #555; }
+.closing h2 { font-size: 36px; font-weight: 400; color: #555; margin-bottom: 64px; }
+.closing .lead { font-size: 88px; line-height: 1.55; }
 
 .notes {
     display: none;
@@ -214,62 +251,39 @@ iframe.demo {
         <p class="sub">做出你的第一个个人主页</p>
     </section>
 
-    <section class="slide" data-notes="点名：今天不是 HTML 课。学生打开的是 Jupyter，不是 VS Code。">
+    <section class="slide" data-notes="0–4 分钟开场定位。今天不是 HTML / CSS / JavaScript 或系统 Web 开发课，而是学习如何和 AI 一起做软件。学生打开 Jupyter，不是 VS Code。主页包含名字、介绍、兴趣或技能、项目、联系方式，至少一个可点击交互。不想公开的信息可以虚构。强调每个人的作品应该不同，不追求全班统一。">
         <div class="kicker">Part 0　0–4 分钟</div>
-        <h2>今天不学这些</h2>
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>Web 开发</li>
-        </ul>
+        <h2>今天的目标</h2>
+        <div class="cols">
+            <div><p class="sub">今天不是</p><p class="lead">HTML / CSS / JS 课</p></div>
+            <div><p class="sub">今天学的是</p><p class="lead">AI Coding Workflow</p></div>
+        </div>
+        <p class="sub" style="margin-top:48px">名字 · 介绍 · 兴趣 / 技能 · 项目 · 联系方式 + 一个交互</p>
+        <p class="lead" style="margin-top:28px">每个人带走一份不一样的主页。</p>
     </section>
 
-    <section class="slide" data-notes="把重心放到这一句，然后进入挑战。">
-        <div class="kicker">今天要学的是</div>
-        <p class="lead">如何和 AI 一起做软件</p>
-    </section>
-
-    <section class="slide" data-notes="强调作品必须不同。不想公开的信息可以虚构。">
-        <div class="kicker">今天的挑战</div>
-        <h2>每个人带走一份自己的主页</h2>
-        <ul class="small">
-            <li>名字</li>
-            <li>About Me</li>
-            <li>Interests / Skills</li>
-            <li>Projects</li>
-            <li>Contact</li>
-            <li>至少一个可以点击的交互</li>
-        </ul>
-    </section>
-
-    <section class="slide" data-notes="重复这一句。不要追求全班统一。">
-        <p class="lead">每个人最终的网页<br>应该是不一样的</p>
-    </section>
-
-    <section class="slide" data-notes="不要在这一页讲太久。让学生知道节奏，然后立刻做 Demo。">
-        <div class="kicker">时间表</div>
+    <section class="slide" data-notes="不要在时间表讲太久，随后立刻做 Demo。15 分钟必须看到网页；33 分钟必须有可点击交互；37 分钟结束统一实操进入自由开发；40 分钟进入 Skill + Harness 总结。到点就检查，不等人，使用备份帮助跟上。">
         <h2>45 分钟怎么走</h2>
-        <table>
-            <tr><th>时间</th><th>内容</th></tr>
-            <tr><td>0–4</td><td>开场 Demo</td></tr>
-            <tr><td>4–8</td><td>Jupyter：跑出第一个网页</td></tr>
-            <tr><td>8–15</td><td>AI 生成个人主页 V0</td></tr>
-            <tr><td>15–21</td><td>完善内容 V1</td></tr>
-            <tr><td>21–27</td><td>视觉重构 V2</td></tr>
-            <tr><td>27–33</td><td>加入交互 V3</td></tr>
-            <tr><td>33–37</td><td>Debug Challenge</td></tr>
-            <tr><td>37–45</td><td>自由开发 + 展示</td></tr>
-        </table>
-    </section>
-
-    <section class="slide" data-notes="这三个点比讲概念更重要。到点就检查，不要等人。">
-        <div class="kicker">硬检查点</div>
-        <h2>只盯三件事</h2>
-        <div class="num">
-            <div><b>15:00</b>　所有人必须看到自己的网页</div>
-            <div><b>33:00</b>　所有人至少有一个可点击交互</div>
-            <div><b>37:00</b>　停止统一教学，进入自由开发</div>
+        <div class="agenda">
+            <dl>
+                <dt>0–4</dt><dd>开场 Demo</dd>
+                <dt>4–8</dt><dd>Jupyter：跑出第一个网页</dd>
+                <dt>8–15</dt><dd>AI 生成个人主页 V0</dd>
+                <dt>15–21</dt><dd>完善内容 V1</dd>
+                <dt>21–27</dt><dd>视觉重构 V2</dd>
+            </dl>
+            <dl>
+                <dt>27–33</dt><dd>加入交互 V3</dd>
+                <dt>33–37</dt><dd>Debug Challenge</dd>
+                <dt>37–40</dt><dd>自由开发 + 快速展示</dd>
+                <dt>40–45</dt><dd>Skill + Harness + 总结</dd>
+            </dl>
+        </div>
+        <div class="milestones">
+            <div><strong>15<small> min</small></strong><p>看到自己的网页</p></div>
+            <div><strong>33<small> min</small></strong><p>至少一个可点击交互</p></div>
+            <div><strong>37<small> min</small></strong><p>进入自由开发</p></div>
+            <div><strong>40<small> min</small></strong><p>回到总结</p></div>
         </div>
     </section>
 
@@ -284,37 +298,27 @@ iframe.demo {
 不使用任何第三方库。</pre>
     </section>
 
-    <section class="slide" data-notes="只讲这一句，然后进入 Jupyter。不要展开模型原理。">
-        <div class="kicker">今天真正的问题</div>
-        <p class="lead">我们怎样把自己想做的东西，<br>准确地告诉 AI？</p>
-    </section>
-
-    <section class="slide" data-notes="这张图整节课反复指。学生带走的是工作流，不是标签名。">
-        <div class="kicker">整节课只记这一张图</div>
-        <h2>AI Coding Workflow</h2>
-        <div class="flow">
-            Describe <i>→</i> Generate <i>→</i> Run <i>→</i> Inspect
-            <i>→</i> Iterate <i>→</i> Debug <i>→</i> Verify
+    <section class="slide" data-notes="从 Demo 问：我们怎样把想做的东西准确告诉 AI？不展开模型原理，随后进入 Jupyter。这张图整节课反复指，学生带走的是工作流，不是标签名。">
+        <div class="kicker">怎样把想做的东西，准确地告诉 AI？</div>
+        <h2 class="workflow-title">AI Coding Workflow</h2>
+        <div class="workflow-main">
+            <div class="flow">Describe <i>→</i> Generate <i>→</i> Run</div>
+            <div class="flow"><i>→</i> Inspect <i>→</i> Iterate <i>→</i> Debug <i>→</i> Verify</div>
         </div>
-        <p class="sub" style="margin-top:48px">看任务 → 复制 Prompt → 问 AI → 贴回 Notebook → Shift + Enter → 看网页</p>
+        <p class="workflow-caption">看任务 → 复制 Prompt → 问 AI → 贴回 Notebook → Shift + Enter → 看网页</p>
     </section>
 
-    <section class="slide" data-notes="目标：每人记住 Shift + Enter，并看到 Hello 网页。不要解释 h1 / p。">
+    <section class="slide instruction" data-notes="4–8 分钟。目标：每人记住 Shift + Enter，并看到 Hello 网页。在 Notebook 中运行写文件 Cell，再运行预览 Cell。卡住先看是否运行错 Cell，不解释 h1 / p 或 HTML 语法。单文件 index.html 是代码变成网页的中间产物。">
         <div class="kicker">4–8 分钟　Part 1</div>
         <h2>今天唯一必须记住的操作</h2>
         <p class="lead">Shift + Enter</p>
         <p class="sub" style="margin-top:24px">运行当前 Cell</p>
-    </section>
-
-    <section class="slide" data-notes="卡住就看他有没有运行错 Cell。不要开始讲 HTML。">
-        <div class="kicker">Part 1</div>
-        <h2>代码会变成一个真正的网页</h2>
-        <div class="flow">代码　<i>→</i>　index.html　<i>→</i>　网页</div>
+        <div class="flow" style="margin-top:36px">代码　<i>→</i>　index.html　<i>→</i>　网页</div>
     </section>
 
     <section class="slide" data-notes="让学生花 1 分钟填写。然后复制 Prompt 01。这是第一次真正的 AI Coding。">
         <div class="kicker">8–15 分钟　Part 2</div>
-        <h2>告诉 AI 你是谁</h2>
+        <h2>Build V0 · 告诉 AI 你是谁</h2>
         <ul class="small">
             <li>姓名</li>
             <li>身份</li>
@@ -323,26 +327,13 @@ iframe.demo {
             <li>一个项目 / 经历</li>
             <li>联系方式</li>
         </ul>
+        <p class="sub" style="margin-top:28px">填写信息 → Prompt 01 → AI 生成单文件主页</p>
     </section>
 
-    <section class="slide" data-notes="课堂红线。巡场时最常见的失败就是把 markdown 围栏一起贴进去。">
-        <div class="kicker">粘贴规则</div>
+    <section class="slide" data-notes="8–15 分钟巡场。最常见的失败是连同 Markdown 围栏一起复制。只复制中间的 HTML，贴到 %%writefile 下面，再按 Shift + Enter。没刷新就再运行 preview；报错让 AI 修，不替学生手写 HTML。">
+        <div class="kicker">Build V0 · 常见问题</div>
         <h2>只复制代码本身</h2>
-        <div class="cols">
-            <div class="box">
-                <h3 class="strike">不要复制</h3>
-                <p>```html<br>……代码……<br>```</p>
-            </div>
-            <div class="box">
-                <h3 class="ok">只要中间的 HTML</h3>
-                <p>贴到 %%writefile 下面<br>然后 Shift + Enter</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="slide" data-notes="巡场只处理这三类。不要替学生手写 HTML。">
-        <div class="kicker">巡场</div>
-        <h2>只会遇到这三类问题</h2>
+        <p class="sub" style="margin-bottom:32px">HTML → 贴到 %%writefile 下面 → Shift + Enter</p>
         <div class="num">
             <div><b>A.</b> AI 返回了 Markdown 围栏　→　删掉围栏</div>
             <div><b>B.</b> 页面没有刷新　→　再运行 preview</div>
@@ -351,25 +342,16 @@ iframe.demo {
     </section>
 
     <section class="slide" data-notes="到点就检查。没成功的人打开 backup/v0.html，把内容贴进 writefile。不要继续等。">
-        <div class="kicker">15:00 强制检查</div>
-        <h2>现在每个人都应该看到</h2>
-        <ul>
-            <li>自己的名字</li>
-            <li>一段介绍</li>
-            <li>一个网页</li>
-        </ul>
+        <div class="checkpoint">
+            <div><strong>15:00</strong><small>强制检查</small></div>
+            <div><h2>页面已显示</h2><p class="sub">自己的名字 · 一段介绍</p></div>
+        </div>
     </section>
 
-    <section class="slide" data-notes="口头强调：不要说重新帮我写一个。">
-        <div class="kicker">15–21 分钟　Part 3</div>
-        <h2>AI Coding ≠ 一次生成</h2>
-        <p class="sub strike">重新帮我写一个</p>
-        <p class="lead" style="margin-top:28px">在现有代码基础上修改<br>并保留已有功能</p>
-    </section>
-
-    <section class="slide" data-notes="现场问：哪个 Prompt 更容易得到你真正想要的结果？">
-        <div class="kicker">21–27 分钟　Part 4</div>
-        <h2>「好看」到底是什么意思？</h2>
+    <section class="slide" data-notes="15–21 分钟 Part 3：先完成内容 V1，强调在已有代码基础上修改并保留功能，不要说重新帮我写一个。此页保持投影，21 分钟再用下方 Prompt 对比引入 Part 4 的视觉重构：哪个更容易得到你想要的结果？不要提前挤占完善内容的时间，比较后进入风格选择。">
+        <div class="kicker">15–21 分钟：完善内容　/　21 分钟：转入视觉迭代</div>
+        <h2>Iterate, don’t restart</h2>
+        <p class="sub" style="margin-bottom:36px">在已有代码基础上修改，并保留已有内容与功能。</p>
         <div class="cols">
             <div class="box">
                 <h3>Prompt A</h3>
@@ -383,7 +365,7 @@ iframe.demo {
     </section>
 
     <section class="slide" data-notes="鼓励自己描述。不要追求统一风格。这一段结束全班页面应开始明显不同。">
-        <div class="kicker">让结果开始分叉</div>
+        <div class="kicker">21–27 分钟　Part 4 · 视觉重构</div>
         <h2>选一种风格，或自己描述</h2>
         <div class="num">
             <div><b>A</b>　Minimal　简洁、留白、专业</div>
@@ -391,31 +373,22 @@ iframe.demo {
             <div><b>C</b>　Colorful　年轻、丰富、活泼</div>
             <div><b>D</b>　Academic　经历与项目为主</div>
         </div>
+        <p class="sub" style="margin-top:32px">从这里开始，每个人的结果应该明显不同。</p>
     </section>
 
-    <section class="slide" data-notes="统一做深浅色切换。运行后必须让学生真的点一下按钮。">
+    <section class="slide" data-notes="27–33 分钟 Part 5，统一做深浅色切换，运行后必须真的点击按钮，再点一次切回。33 分钟强制检查：每个人至少一个可点击交互。不要问 JavaScript 写了什么，跟不上的人用 backup/final.html。此页同时承担任务和验收，33 分钟检查通过后进入 Debug。">
         <div class="kicker">27–33 分钟　Part 5</div>
-        <h2>让网页真正动起来</h2>
-        <p class="lead">Dark / Light<br>Theme Toggle</p>
-        <p class="sub" style="margin-top:28px">点击：Light → Dark<br>再点：Dark → Light</p>
+        <h2>加入 Dark / Light Toggle</h2>
+        <div class="checkpoint">
+            <div><strong>33:00</strong><small>必须有可点击交互</small></div>
+            <div><p class="lead">点一下，再点一下</p><p class="sub" style="margin-top:28px">Light → Dark → Light</p></div>
+        </div>
     </section>
 
-    <section class="slide" data-notes="检查按钮能不能点。不要问 JavaScript 写了什么。跟不上的人用 backup/final.html。">
-        <div class="kicker">33:00 强制检查</div>
-        <h2>现在请点一下按钮</h2>
-        <p class="lead">每个人至少有一个<br>可点击交互</p>
-    </section>
-
-    <section class="slide" data-notes="必须保留。没有 Debug，学生会以为 AI 每次都写对。用独立文件 debug_demo.html。">
+    <section class="slide" data-notes="33–37 分钟 Debug Challenge。必须保留，否则学生会以为 AI 每次都写对。用独立文件 debug_demo.html，不破坏主页。点击 Switch Theme 没有反应，要求给 AI 完整代码、实际现象、预期结果和报错信息。不要先公布答案：HTML 调用 toggleTheme()，脚本定义 switchTheme()。">
         <div class="kicker">33–37 分钟　Part 6</div>
-        <h2>AI 写的代码一定正确吗？</h2>
-        <p class="lead">不一定。</p>
-        <p class="sub" style="margin-top:28px">点击 Switch Theme —— 没有反应。</p>
-    </section>
-
-    <section class="slide" data-notes="不要先公布答案。根因：HTML 调用 toggleTheme()，脚本定义 switchTheme()。">
-        <div class="kicker">不要只问「为什么不行」</div>
-        <h2>给 AI 四样东西</h2>
+        <h2>Debug the failure</h2>
+        <p class="sub" style="margin-bottom:32px">Switch Theme 没有反应？给 AI 四样东西：</p>
         <div class="num">
             <div><b>1.</b> 完整代码</div>
             <div><b>2.</b> 发生了什么</div>
@@ -424,30 +397,65 @@ iframe.demo {
         </div>
     </section>
 
-    <section class="slide" data-notes="修完后必须自己再点一次。">
-        <p class="lead">AI 说已经修复，没有意义。</p>
-        <p class="sub" style="margin-top:32px">重新运行并自己验证，才算修复。</p>
+    <section class="slide" data-notes="仍在 33–37 分钟 Debug 阶段。修完后必须重新运行并自己再点一次，确认能切换且能切回。没有验证不能算修复，37 分钟结束统一实操。">
+        <div class="kicker">Debug · 验证修复</div>
+        <h2>Verify the fix</h2>
+        <p class="lead">AI 说修好了 ≠ 修好了</p>
+        <p class="sub" style="margin-top:32px">重新运行 → 点击按钮 → 确认切换与切回</p>
     </section>
 
-    <section class="slide" data-notes="统一教学到这里结束。不要替学生写代码。只把需求问清楚，把人推回 AI。展示时只问：你最后增加了什么？你是怎么告诉 AI 的？">
-        <div class="kicker">37–42 分钟　Part 7</div>
+    <section class="slide" data-notes="37–39 分钟自由开发，只选一处小改动并验证。不要替学生写代码，只把需求问清楚，把人推回 AI。39–40 分钟邀请一位学生快速展示：你最后增加了什么？你是怎么告诉 AI 的？40 分钟准时进入进阶总结。">
+        <div class="kicker">37–40 分钟　Part 7 · 自由开发与快速展示</div>
         <h2>现在你是产品经理</h2>
         <p class="lead">我希望我的主页<br>还可以做什么？</p>
     </section>
 
-    <section class="slide" data-notes="回到工作流。这是学生应该带走的东西。">
-        <div class="kicker">今天真正学习的是什么</div>
-        <h2>不是 HTML / CSS / JavaScript</h2>
+    <section class="slide" data-notes="40:00–42:00，共两分钟。先用半分钟回顾描述需求、生成、运行、检查、修改、Debug 与验证：刚才每一步都由你推动。再问：是谁按 Shift + Enter，又是谁发现按钮没反应？指向 Run 和 Inspect，答案都是你。Fix 是你把问题带回下一次 Prompt，让 AI 修改。老师规定 15 分钟看到网页、33 分钟有交互，出错就 Debug，通过检查才进入下一阶段。今天这节课就像老师手动推动的 Harness，这是类比，不是软件已经自动执行。最后停在问题上：如果 Agent 能接手更多步骤呢？">
+        <div class="kicker">40–45 分钟　Skill + Harness 与总结</div>
+        <div class="loop-recap">
+        <h2>You just used an AI Coding Loop</h2>
         <div class="flow">
-            Describe <i>→</i> Generate <i>→</i> Run <i>→</i> Inspect
-            <i>→</i> Iterate <i>→</i> Debug <i>→</i> Verify
+            Prompt <i>→</i> AI 修改 <i>→</i> 运行 <i>→</i> 检查
+            <i>→</i> 修复 <i>→</i> 再次 Prompt
+        </div>
+        <p class="lead">Most of the loop<br>is still driven by you.</p>
+        <div class="loop-example">
+            <p>15 分钟：看到网页 → 33 分钟：交互可用 → 通过检查：进入下一阶段</p>
+            <p>出错 → 调试 → 再检查。今天这节课，就像老师手动推动的 Harness。</p>
+        </div>
+        <p class="loop-question">What if the Agent could drive more of the loop?</p>
         </div>
     </section>
 
-    <section class="slide" data-notes="收束。强调学生作品应该和示例不一样。">
-        <h2>AI Coding ≠ AI 替你思考</h2>
-        <p class="sub">AI 可以写代码、改代码、找 Bug、解释代码。</p>
-        <p class="lead" style="margin-top:36px">改变的是「如何写程序」<br>不是「是否需要思考」</p>
+    <section class="slide" data-notes="42:00–44:30，约 150 秒。沿用同一个需求：给主页加深浅色切换。左边是本课使用的普通 AI Coding 方式，不是所有工具的能力上限：你反复提需求、运行和检查。右边在具备文件、运行和验证工具时，Agent 可以读取 index.html、修改、预览、点击按钮，失败就修复并再次检查，通过后才结束。指 Skill：保留内容、改善层级、检查间距和可读性、验证交互，这些都是刚才反复用过的经验；保存设计经验、检查清单和修改原则，下次让 Agent 直接复用。指 Harness：把上一页老师推动的检查流程交给工具和规则组织执行。用三句收住：Prompt 是这一次我要什么；Skill 是这类事情通常怎么做好；Harness 是 Agent 怎么把事情完整做完并验证。不是给 Markdown 起个名字就能自动执行。今天只需理解，不要求配置；目标和验收判断仍由人负责。">
+        <div class="agent-compare">
+        <h2>From AI Coding to Agentic AI Coding</h2>
+        <div class="agent-columns">
+            <div class="box">
+                <h3>AI Coding</h3>
+                <p>人推动流程</p>
+                <div class="flow">Prompt <i>→</i> AI 修改 <i>→</i> 你运行</div>
+                <div class="flow"><i>→</i> 你检查 <i>→</i> 再提要求 <i>↺</i></div>
+            </div>
+            <div class="box">
+                <h3>Agentic AI Coding</h3>
+                <p>Agent 接手更多步骤</p>
+                <div class="flow">目标 <i>→</i> 读取 <i>→</i> 修改 <i>→</i> 运行</div>
+                <div class="flow"><i>→</i> 检查 <i>→</i> 修复 <i>→</i> 验证</div>
+                <div class="agent-concepts">
+                    <dl><dt>Skill</dt><dd>这类事情怎么做好</dd></dl>
+                    <dl><dt>Harness</dt><dd>怎么把事情完整做完<br>并验证</dd></dl>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="slide" data-notes="44:30–45:00，半分钟收束，不再增加任务。强调学生作品应该和示例不一样。Skill 留住经验，Harness 组织执行与验证，目标和判断仍然需要你。">
+        <div class="closing">
+            <h2>AI Coding ≠ AI 替你思考</h2>
+            <p class="lead">How we write code changes.<br>The need to think does not.</p>
+        </div>
     </section>
 </div>
 
